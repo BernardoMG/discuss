@@ -2,7 +2,7 @@ defmodule DiscussWeb.TopicController do
   use DiscussWeb, :controller
 
   alias Discuss.Repo
-  alias Discuss.Topic
+  alias Discuss.Discussions.Topic
 
   plug DiscussWeb.Plugs.RequireAuth when action not in [:index]
   plug :check_topic_owner when action in [:update, :edit, :delete]

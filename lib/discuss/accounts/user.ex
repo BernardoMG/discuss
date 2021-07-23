@@ -1,4 +1,4 @@
-defmodule Discuss.User do
+defmodule Discuss.Accounts.User do
   use Ecto.Schema
 
   import Ecto.Changeset
@@ -10,15 +10,15 @@ defmodule Discuss.User do
     field :provider, :string
     field :token, :string
 
-    has_many :topics, Discuss.Topic
-    has_many :comments, Discuss.Comment
+    has_many :topics, Discuss.Discussions.Topic
+    has_many :comments, Discuss.Discussions.Comment
 
     timestamps()
   end
 
-  def changeset(struct, params \\ %{}) do
-    struct
-    |> cast(params, [:email, :provider, :token])
+  def changeset(user, attrs) do
+    user
+    |> cast(attrs, [:email, :provider, :token])
     |> validate_required([:email, :provider, :token])
   end
 end
